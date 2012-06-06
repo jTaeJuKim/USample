@@ -45,12 +45,16 @@ describe "UserPages" do
           fill_in "Confirmation", with: "foobar"
         end
 
-        describe "after creating the user" do
+        describe "after saving the user" do
           before{click_button submit}
           let(:user){User.find_by_email('user@example.com')}
           it{should have_selector('title', text: user.name)}
           it{should have_selector('div.alert.alert-success', text: 'Welcome')}
+
+          it{ should have_link('Sign out')}
         end
+
+
 
 
 
